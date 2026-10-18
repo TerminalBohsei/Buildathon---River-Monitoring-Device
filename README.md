@@ -1,10 +1,10 @@
 # Buidathon 2026 - River-Monitoring-Device
-Team Kohsei's Kohai
+***Team Kohsei's Kohai***
 
 ## Overview
 A low-cost, solar-powered monitoring device designed to be placed in rivers and streams. It measures water temperature, turbidity, dissolved solids (TDS) and water level, then logs the readings and uploads them wirelessly so water quality and river conditions can be tracked over time without anyone needing to be on site.
 
-Objective:
+**Objective:**
 Provide continuous, affordable, low-maintenance river monitoring that can detect changes in water quality (e.g. sediment from runoff or erosion) and rising water levels (e.g. flood risk) early.
 
 ## Competition Objective / Rules:
