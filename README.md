@@ -1,6 +1,5 @@
-# Buidathon---River-Monitoring-Devicel
-# Micromouse
-USYD Micromouse competition
+# Buidathon 2026 - River-Monitoring-Device
+Team Kohsei's Kohai
 
 ## Overview
 A low-cost, solar-powered monitoring device designed to be placed in rivers and streams. It measures water temperature, turbidity, dissolved solids (TDS) and water level, then logs the readings and uploads them wirelessly so water quality and river conditions can be tracked over time without anyone needing to be on site.
@@ -8,20 +7,9 @@ A low-cost, solar-powered monitoring device designed to be placed in rivers and 
 Objective:
 Provide continuous, affordable, low-maintenance river monitoring that can detect changes in water quality (e.g. sediment from runoff or erosion) and rising water levels (e.g. flood risk) early.
 
-** Competition Rules:**
-Robot can only attempt the course **ONCE**.
-
-CANNOT have detachable components - no projectiles.
-
-Physical contact with the course results in time penalties.
-
-**Robot Dimensions:**
-
-Area Limit: 15x15cm
-
-Height Limit: 100cm
-
-Maze: 2x2m 
+## Competition Objective / Rules:
+**Objective:**
+Design a mechatronic solution that helps address environmental damage with climate change in mind. Teams must do this by choosing **at least one** of three subcatergories: **Monitoring**, **Repurposing** and **Restoration** and meet at least **one** of the listed criteria for the chosen subcategory.
 
 ## Hardware
 - 1x ESP32 (Given in starter kit)

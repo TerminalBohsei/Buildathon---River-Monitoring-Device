@@ -7,7 +7,7 @@
 
 // goToSleep --> shuts everything down and puts the esp32 into deep sleep
 void goToSleep() {
-  Serial.println("Sleeping...");
+  Serial.println("Going to sleep...");
   Serial.flush();
 
   // unmount the flash and keep the sensors off
