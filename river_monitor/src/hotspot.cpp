@@ -30,10 +30,10 @@ pre{white-space:pre-wrap}</style></head><body>
 <button onclick="if(confirm('Delete ALL stored data?'))location='/clear'">Clear stored data</button>
 <script>
 fetch('/settime?t='+Math.floor(Date.now()/1000));
-function live(){var auto=false;
+var auto=false;
 function live(){var e=document.getElementById('live');if(!auto)e.textContent='Reading...';
 fetch('/live').then(function(r){return r.text()}).then(function(t){e.textContent=t;if(auto)setTimeout(live,2000)})}
-if(location.search.indexOf('auto')>-1){auto=true;live()}}
+if(location.search.indexOf('auto')>-1){auto=true;live()}
 </script></body></html>)rawliteral";
 
 // sendFile --> sends a log file to the phone as a download
