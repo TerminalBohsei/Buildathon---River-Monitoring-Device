@@ -5,6 +5,12 @@
 // 0 = deployment mode (sleeps between readings and logs to flash)
 #define CAL_MODE            1
 
+// 1 = demo mode: always on, sensors stay powered, constant readings, logs to flash
+// 0 = normal operation (see CAL_MODE / deployment mode)
+#define DEMO_MODE      1
+#define DEMO_READ_MS   1000     // time between readings in demo mode (ms)
+#define DEMO_LOG_MS    10000    // time between saved log rows in demo mode (ms)
+
 // time between readings in seconds (15 minutes)
 #define SAMPLE_INTERVAL_S   (15 * 60)
 

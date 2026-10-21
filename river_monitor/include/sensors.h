@@ -22,3 +22,6 @@ void printReading(const Reading &r);
 
 // keeps the sensor power switch off while the esp32 is asleep
 void sensorsPrepareForSleep();
+
+// keeps the sensors powered between readings (for demos), call before takeReading()
+void sensorsSetAlwaysOn(bool on);

@@ -16,6 +16,13 @@ static Adafruit_LIS3DH lis = Adafruit_LIS3DH();
 // true if the accelerometer was found
 static bool lisOk = false;
 
+// true = keep the sensors powered between readings (demo mode)
+static bool alwaysOn = false;
+static bool sensorsWarm = false;
+
+// sensorsSetAlwaysOn --> turns always-on mode on or off
+void sensorsSetAlwaysOn(bool on) { alwaysOn = on; }
+
 // sensorPower --> turns the sensor power switch on or off
 static void sensorPower(bool on) {
   pinMode(PIN_SENSOR_PWR, OUTPUT);
@@ -154,18 +161,23 @@ static float tiltToLevelCm(float deg) {
   return f * LEVEL_RANGE_CM;
 }
 
-// takeReading --> turns on the sensors, reads all of them and turns them off again
+// takeReading --> powers the sensors (if needed), reads all of them, powers them off (unless always on)
 Reading takeReading() {
   Reading r;
-  sensorPower(true);
 
-  // wait for the sensors to settle
-  delay(1500);
+  // power up and wait for the sensors to settle (skipped if they are already on)
+  if (!sensorsWarm) {
+    sensorPower(true);
+    delay(1500);
+    sensorsWarm = alwaysOn;
+  }
 
-  // start the accelerometer again since it may have lost power
-  lisOk = lis.begin(LIS3DH_ADDR);
-  if (lisOk) lis.setRange(LIS3DH_RANGE_2_G);
-  else Serial.println("LIS3DH not found - check wiring/address");
+  // start the accelerometer (only again if it failed, or if power was cut)
+  if (!lisOk || !alwaysOn) {
+    lisOk = lis.begin(LIS3DH_ADDR);
+    if (lisOk) lis.setRange(LIS3DH_RANGE_2_G);
+    else Serial.println("LIS3DH not found - check wiring/address");
+  }
 
   // read each sensor
   r.tempC    = readTempC();
@@ -174,7 +186,11 @@ Reading takeReading() {
   r.tilt_deg = readTiltDeg();
   r.level_cm = tiltToLevelCm(r.tilt_deg);
 
-  sensorPower(false);
+  // power down unless we are in always-on mode
+  if (!alwaysOn) {
+    sensorPower(false);
+    sensorsWarm = false;
+  }
   return r;
 }
 
